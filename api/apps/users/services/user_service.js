@@ -45,7 +45,7 @@ class UserService {
     create(body) {
         return this.crypt.encrypt(body.password)
         .then(password => 
-            User.create({ ...body, password})
+            User.create(password?{ ...body, password}: body)
             .then(obj => obj.view())
             .then(obj => {
                 if (this.socket){
@@ -65,7 +65,7 @@ class UserService {
     replace(uuid, body) {
         return this.crypt.encrypt(body.password)
         .then(password => 
-            User.replaceOne({ _id: uuid}, { ...body, password })
+            User.replaceOne({ _id: uuid}, password?{ ...body, password}: body)
             .then(() => User.findOne({ _id: uuid }))
             .then(obj => obj.view())
         ).then(obj => {
@@ -84,7 +84,7 @@ class UserService {
     update(uuid, body) {
         return this.crypt.encrypt(body.password)
         .then(password => 
-            User.updateOne({ _id: uuid}, { $set: { ...body, password: (password || body.password) } })
+            User.updateOne({ _id: uuid}, { $set: password?{ ...body, password}: body })
             .then(() => User.findOne({ _id: uuid }))
             .then(obj => obj.view())
         ).then(obj => {
