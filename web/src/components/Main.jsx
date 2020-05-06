@@ -14,6 +14,7 @@ const socket_service = SocketService.getInstance()
 
 function Main() {
   const [ room, setRoom ] = useState("")
+  const [ choose, setChoose ] = useState("")
   const [ search, setSearch ] = useState("")
   const [ focus, setFocus ] = useState(null)
 
@@ -48,8 +49,9 @@ function Main() {
 
   }, [])
 
-  function handleChooseRoom(room){
+  function handleChooseRoom(room, choose){
     setRoom(room)
+    setChoose(choose)
     setFocus(null)
   }
 
@@ -70,7 +72,7 @@ function Main() {
       <Row>
         <Col xs={3} style={{ paddingRight: 0 }}>
           <SearchRoom onSearch={ handleSearch } />
-          <RoomsBar onChooseRoom={ handleChooseRoom } search={ search }></RoomsBar>
+          <RoomsBar onChooseRoom={ handleChooseRoom } search={ search } room={choose}></RoomsBar>
         </Col>
         <Col style={{ paddingLeft: 0 }}>
           <Room room={ room } focus={ focus }></Room>

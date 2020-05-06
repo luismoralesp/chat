@@ -14,7 +14,7 @@ const user_service = new UserService()
 const room_service = new RoomService()
 const socket_service = SocketService.getInstance()
 
-function ChatBar(props) {
+function RoomBar(props) {
     const [ groups, setGroups ] = useState([])
     const [ users, setUsers ] = useState([])
     const [ show, setShow ] = useState(false)
@@ -47,7 +47,7 @@ function ChatBar(props) {
 
 
     function handleChooseRoom(room){
-        props.onChooseRoom(room.uuid)
+        props.onChooseRoom(room.uuid, room.uuid)
     }
 
     function handleChooseUser(user){
@@ -58,7 +58,7 @@ function ChatBar(props) {
                 me.uuid
             ]: [me.uuid],
             personal: true
-        }).then(room => props.onChooseRoom(room.data.uuid))
+        }).then(room => props.onChooseRoom(room.data.uuid, user.uuid))
     }
 
     function handlePlus(e){
@@ -77,12 +77,14 @@ function ChatBar(props) {
             <RoomsBarSection
                 name="Personal rooms"
                 rooms={ users }
+                room={props.room}
                 onChooseRoom={ handleChooseUser }
             ></RoomsBarSection>
            
             <RoomsBarSection
                 name="Group rooms"
                 rooms={ groups }
+                room={props.room}
                 onChooseRoom={ handleChooseRoom }
                 onPlus={ handlePlus }
             ></RoomsBarSection>
@@ -90,4 +92,4 @@ function ChatBar(props) {
     )
 }
 
-export default ChatBar
+export default RoomBar

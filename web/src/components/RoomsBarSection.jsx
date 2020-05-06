@@ -14,13 +14,14 @@ const style = {
 const image_service = new ImageService()
 
 function ChatBarSection(props) {
+    localStorage.room = props.room
     
     function handleChooseRoom(room){
         return () => props.onChooseRoom(room)
     }
     
     return (
-        <Accordion defaultActiveKey="0">
+        <Accordion defaultActiveKey="0" >
             <Accordion.Toggle as={Button} style={{ width: 'calc(100% - 20px)'}} variant="link" eventKey="0">
                 <Row>
                     <Col style={{ textAlign: 'left' }}>
@@ -35,7 +36,7 @@ function ChatBarSection(props) {
                <ListGroup> 
                     { props.rooms.map(
                         room => ( 
-                            <ListGroup.Item  style={{ borderRadius: 0, cursor: 'pointer'}} onClick={ handleChooseRoom(room) }>
+                            <ListGroup.Item style={{ borderRadius: 0, cursor: 'pointer', background: (localStorage.room === room.uuid?'#efefff': 'none' )}} onClick={ handleChooseRoom(room) }>
                                 <Row>
                                 <Col xs={3} style={{ paddingRight: 0 }}>
                                     <Image 
