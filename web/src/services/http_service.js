@@ -25,7 +25,7 @@ class HttpService{
                 params
             })
             .catch(err => {
-                if(err.response.status == 401){
+                if(err.response.status === 401){
                     window.location.replace("/login")   
                 }
                 console.log(err.response)

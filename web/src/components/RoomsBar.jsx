@@ -43,7 +43,7 @@ function RoomBar(props) {
             .then(rooms => setGroups(rooms.data))
         })
 
-    }, [props.search])
+    }, [props.search, me.uuid])
 
 
     function handleChooseRoom(room){
@@ -53,7 +53,7 @@ function RoomBar(props) {
     function handleChooseUser(user){
         room_service.create({
             alias: user.alias,
-            members: user.uuid != me.uuid?[
+            members: user.uuid !== me.uuid?[
                 user.uuid,
                 me.uuid
             ]: [me.uuid],

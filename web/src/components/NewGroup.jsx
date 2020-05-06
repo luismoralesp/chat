@@ -34,7 +34,7 @@ function NewGroup(props){
 
     function handleChooseUser(user){
         return (e) => {
-            if (user.uuid != me.uuid && !members.filter(m => m.uuid === user.uuid).length){
+            if (user.uuid !== me.uuid && !members.filter(m => m.uuid === user.uuid).length){
                 setMembers([ ...members, user ])
             }
             setSearch("")
@@ -79,7 +79,7 @@ function NewGroup(props){
                         <Form.Label>Members:</Form.Label>
                         <Card.Body style={{ padding: 2}}>
                         { members.map( member => (
-                            <Badge variant="light" style={{ margin: 2}}>
+                            <Badge key={ new Date().getTime() } variant="light" style={{ margin: 2}}>
                                 <Row>
                                     <Col xs={6}>
                                         <Image 

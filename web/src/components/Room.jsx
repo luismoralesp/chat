@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, forwardRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Card } from 'react-bootstrap';
 import Message from './Message'
 import MessageService from '../services/message_service'
@@ -55,7 +55,7 @@ function Room(props) {
                     alias={message.alias}
                     room={message.room}
                     message={message.message}
-                    focus={message.uuid==props.focus}
+                    focus={message.uuid === props.focus}
                 ></Message>
             )) }
         </Card>

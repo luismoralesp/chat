@@ -8,9 +8,6 @@ import { PlusCircle } from 'react-bootstrap-icons';
 import ImageService from '../services/image_service'
 import logo from '../logo.svg'
 
-const style = {
-}
-
 const image_service = new ImageService()
 
 function ChatBarSection(props) {

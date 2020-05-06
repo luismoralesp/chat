@@ -5,14 +5,9 @@ import { Form } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import MessageService from '../services/message_service';
-import SocketService from "../services/socket_service";
 import Picker from 'emoji-picker-react';
 
-const style = {
-}
-
 const message_service = new MessageService()
-const socket_service = SocketService.getInstance()
 
 function ChatBar(props) {
     const [ message, setMessage ] = useState("")
@@ -62,7 +57,7 @@ function ChatBar(props) {
                         style={{ width:'100%', height: '70px' }} variant="" type="submit"
                         onClick={ handleClick }
                         >
-                        😉
+                        <span role="img" aria-label="wink">😉</span>
                     </Button>
                </Col>
                <Col style={{ paddingLeft: 0, paddingRight: 0 }} >
