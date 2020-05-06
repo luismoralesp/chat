@@ -9,8 +9,7 @@ const MessageSchema = new mongoose.Schema({
     },
     emitter: {
         type: String,
-        required: true,
-        unique: true,
+        required: true
     },
     alias: {
         type: String,
