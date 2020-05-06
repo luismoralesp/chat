@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import AuthService from '../services/auth_service';
 
 const style = {
@@ -58,6 +59,7 @@ function Login() {
                         value={password}
                         onChange={ handleChangePassword }
                     />
+                    <Link to="register/" >Create an account</Link>
                 </Form.Group>
                 <Button 
                     variant="primary"
