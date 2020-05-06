@@ -68,7 +68,12 @@ class UserService {
             User.replaceOne({ _id: uuid}, { ...body, password })
             .then(() => User.findOne({ _id: uuid }))
             .then(obj => obj.view())
-        )
+        ).then(obj => {
+            if (this.socket){
+                this.socket.sendNewUser(obj)
+            }
+            return obj
+        })
     }
 
     /**
@@ -82,7 +87,12 @@ class UserService {
             User.updateOne({ _id: uuid}, { $set: { ...body, password: (password || body.password) } })
             .then(() => User.findOne({ _id: uuid }))
             .then(obj => obj.view())
-        )
+        ).then(obj => {
+            if (this.socket){
+                this.socket.sendNewUser(obj)
+            }
+            return obj
+        })
     }
 
     /**
@@ -90,7 +100,12 @@ class UserService {
      * @param {String} uuid 
      */
     delete(uuid) {
-        return User.deleteOne({ _id: uuid })
+        return User.deleteOne({ _id: uuid }).then(obj => {
+            if (this.socket){
+                this.socket.sendNewUser(obj)
+            }
+            return obj
+        })
     }
 }
 
