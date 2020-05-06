@@ -35,7 +35,7 @@ function Login() {
             auth_service.updateNextTime()
             window.location.replace("/")
         })
-        .catch(err => console.log((err)))
+        .catch(err => alert("User or password not match"))
     }
 
     return (
