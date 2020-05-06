@@ -1,0 +1,29 @@
+{
+    "version": 2,
+    "builds": [{ "src": "index.js", "use": "@now/node-server" }],
+    "routes": [
+      {
+        "src" : "/(.*)", "dest":"/index.js"
+      }
+    ],
+    "env":{
+      "SALT_WORK_FACTOR": "10",
+      "JWT_SECRET": "private.pem",
+      "JWT_ALGORITHM": "RS256",
+      "JWT_LIVE": "1h",
+
+      "MONGOOSE_NEW_URL_PARSER": "true",
+      "MONGOOSE_UNIFIED_TOPOLOGY": "true",
+      "MONGOOSE_CREATE_INDEX": "true",
+      "MONGOOSE_HOST": "192.168.99.100",
+      "MONGOOSE_PORT": "27017",
+      "MONGOOSE_DATABASE": "admin",
+      "MONGOOSE_USER": "root",
+      "MONGOOSE_PASSWORD": "example",
+
+      "EXPRESS_PORT": "9000",
+
+      "BACKEN_UUID": "<BACK-END>",
+      "SOCKET_URL": "http://localhost:8888"
+    }
+  }
