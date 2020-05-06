@@ -43,7 +43,7 @@ function SearchMessage(props){
                     </Form.Group>
                     <ListGroup style={{position:'absolute', marginTop: -18, width: 'calc(100% - 32px)'}}>
                         {( messages.map( message => (
-                            <ListGroup.Item style={{ cursor: 'pointer' }} onClick={ handleChooseMessage(message) }>
+                            <ListGroup.Item key={message.uuid} style={{ cursor: 'pointer' }} onClick={ handleChooseMessage(message) }>
                                 <Card.Body>
                                     <Card.Title>{ message.alias }</Card.Title>
                                     <Card.Text>{ message.message }</Card.Text>
