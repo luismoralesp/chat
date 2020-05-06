@@ -34,12 +34,13 @@ function ChatBar(props) {
     }
 
     function hadleSendMessage(){
+        setMessage("")
         message_service.create({
             emitter: me.uuid,
             room: props.room,
             message
         }).then(message => {
-            setMessage("")
+            
         })
     }
 
