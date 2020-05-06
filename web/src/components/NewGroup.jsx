@@ -79,7 +79,7 @@ function NewGroup(props){
                         <Form.Label>Members:</Form.Label>
                         <Card.Body style={{ padding: 2}}>
                         { members.map( member => (
-                            <Badge key={ new Date().getTime() } variant="light" style={{ margin: 2}}>
+                            <Badge key={ member.uuid } variant="light" style={{ margin: 2}}>
                                 <Row>
                                     <Col xs={6}>
                                         <Image 

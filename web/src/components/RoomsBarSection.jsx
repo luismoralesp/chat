@@ -10,7 +10,7 @@ import logo from '../logo.svg'
 
 const image_service = new ImageService()
 
-function ChatBarSection(props) {
+function RoomBarSection(props) {
     localStorage.room = props.room
     
     function handleChooseRoom(room){
@@ -33,7 +33,7 @@ function ChatBarSection(props) {
                <ListGroup> 
                     { props.rooms.map(
                         room => ( 
-                            <ListGroup.Item style={{ borderRadius: 0, cursor: 'pointer', background: (localStorage.room === room.uuid?'#efefff': 'none' )}} onClick={ handleChooseRoom(room) }>
+                            <ListGroup.Item key={room.uuid} style={{ borderRadius: 0, cursor: 'pointer', background: (localStorage.room === room.uuid?'#efefff': 'none' )}} onClick={ handleChooseRoom(room) }>
                                 <Row>
                                 <Col xs={3} style={{ paddingRight: 0 }}>
                                     <Image 
@@ -54,4 +54,4 @@ function ChatBarSection(props) {
     )
 }
 
-export default ChatBarSection
+export default RoomBarSection
